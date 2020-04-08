@@ -25,6 +25,10 @@ class Customer(User):
         super().__init__(name)
         self.purchases = []
 
+    def purchase_product(self, product):
+        purchase = Purchase(product, self)
+        self.purchases.append(purchase)
+
 # Vendor same as Customer, but instead of purchase, an empty list for products
 
 
@@ -32,6 +36,10 @@ class Vendor(User):
     def __init__(self, name):
         super().__init__(name)
         self.products = []
+
+    def create_product(self, product_name, product_price):
+        product = Product(product_name, product_price, self)
+        self.products.append(product)
 
 
 # PRODUCT AND PURCHASE
